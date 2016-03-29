@@ -1,0 +1,65 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[pdftex]{hyperref}
+
+% Lengths and indenting
+\setlength{\textwidth}{16.5cm}
+\setlength{\marginparwidth}{1.5cm}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.15cm}
+\setlength{\textheight}{22cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{Introduction to Learning and Intelligent Systems - Spring 2015}
+\author{Martin Ivanov (ivanovma@student.ethz.ch)\\ Can Tuerk (can.tuerk@juniors.ethz.ch)\\ Jens Hauser(jhauser@student.ethz.ch)\\}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Project 2 : Two-Label Classification}
+
+\subsection*{Problem description}
+In this machine learning setting we received datafiles of biomedical images of human tissue which has to be classified into two categories - one with seven types and one with three. The data is beside the two classes, structured into nine variables representing parameters about geometrical and texture-related features and two variables which consist of four and forty binary columns in a one-of-k format.
+
+Unfortunately the training data does not represent all possible combinations of the different subtypes of the two classes. Also the weights of the data differ enormously. We observed the following classes and weights within the training data:
+
+\{class(1,0)\}: 3634 - \{class(1,1)\}: 1644 - \{class(2,0)\}: 308 - \{class(2,1)\}: 6827 - \{class(3,1)\}: 861 - \{class(4,1)\}: 42 - \{class(4,2)\}: 28 - \{class(5,2)\}: 239 - \{class(6,1)\}: 385 - \{class(7,2)\}: 546
+
+
+\subsection*{Solution}
+Our solution with a best peformance of about 0.14 on the validation data due to the given loss function is mainly based on a two stage decision tree approach.
+
+For our best result we used the randomized decision tree classifier 'ExtraTreesClassifier' of the scikit-learn package. First we trained our classifier on the first category of our training data and made predictions based on the best estimator found by cross validation and grid search on the hyper parameters and hereafter we did run the same classification procedure for the second category. The selected features and also the hyper parameters for this approach are provided in the attached code file.
+
+\newpage
+
+\subsection*{Different Approaches}
+Before getting the above result, we carried out the following actions for improvment of our earlier results. On all of the following approaches we spend a lot of time to identify the best subset of our features. Unfortunately we runned out of time to get such a result as provided in the harder baseline.
+
+\begin{itemize}
+\item Classification based on random forest
+\item Classification on the principal components of the data
+\item K-nearest neighbour classification
+\item Naive Bayes classification
+\item Logistic Regression
+\item Stochastic Gradient Descendent classification
+\item Support Vector classification
+\item Unsupervised Learning tasks on the validation data to identify features
+
+\end{itemize}
+
+
+
+
+
+
+
+\end{document}
